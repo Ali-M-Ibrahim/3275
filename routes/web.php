@@ -7,6 +7,10 @@ use App\Http\Controllers\FirstController;
 use App\Http\Controllers\SecondController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\InvokController;
+use App\Http\Controllers\DataController;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -101,3 +105,6 @@ Route::resource('product',SecondController::class);
 Route::apiResource("product2",APIController::class);
 
 Route::get("onlyone",InvokController::class);
+
+
+Route::get('data',[DataController::class,'index']);
