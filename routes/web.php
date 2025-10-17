@@ -8,6 +8,7 @@ use App\Http\Controllers\SecondController;
 use App\Http\Controllers\APIController;
 use App\Http\Controllers\InvokController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\CustomerController;
 
 
 
@@ -108,3 +109,38 @@ Route::get("onlyone",InvokController::class);
 
 
 Route::get('data',[DataController::class,'index']);
+
+Route::get('create1',[CustomerController::class,'create1']);
+Route::get('create2',[CustomerController::class,'create2']);
+Route::get('create3',[CustomerController::class,'create3']);
+Route::post('create4',[CustomerController::class,'create4']);
+Route::post('create5',[CustomerController::class,'create5']);
+
+Route::put('update1/{id}',[CustomerController::class,'update1']);
+Route::put('update2/{id}',[CustomerController::class,'update2']);
+Route::put('update3/{id}',[CustomerController::class,'update3']);
+
+Route::get('massUpdate',[CustomerController::class,'massUpdate']);
+Route::delete('delete1/{id}',[CustomerController::class,'delete1']);
+
+Route::get('massDelete',[CustomerController::class,'massDelete']);
+
+Route::get('getAll',[CustomerController::class,'getAll']);
+Route::get('getById/{id}',[CustomerController::class,'getById']);
+
+Route::get('condition',[CustomerController::class,'condition']);
+Route::get('condition2',[CustomerController::class,'condition2']);
+
+Route::get('conditionOr',[CustomerController::class,'conditionOr']);
+
+Route::get('consitionSelect',[CustomerController::class,'consitionSelect']);
+
+Route::get('conditionIn',[CustomerController::class,'conditionIn']);
+
+Route::get('conditionBetween',[CustomerController::class,'conditionBetween']);
+Route::get('conditionLike',[CustomerController::class,'conditionLike']);
+Route::get('stats',[CustomerController::class,'stats']);
+Route::get('join',[CustomerController::class,'join']);
+
+
+

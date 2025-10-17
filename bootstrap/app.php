@@ -12,7 +12,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->validateCsrfTokens(except: [
-            'post-data'
+            'post-data',
+            'create4',
+            'create5',
+            'update1/*',
+            'update2/*',
+            'update3/*',
+            'delete1/*'
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
