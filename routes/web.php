@@ -9,7 +9,8 @@ use App\Http\Controllers\APIController;
 use App\Http\Controllers\InvokController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\CustomerController;
-
+use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\CustomerResource;
 
 
 Route::get('/', function () {
@@ -141,6 +142,27 @@ Route::get('conditionBetween',[CustomerController::class,'conditionBetween']);
 Route::get('conditionLike',[CustomerController::class,'conditionLike']);
 Route::get('stats',[CustomerController::class,'stats']);
 Route::get('join',[CustomerController::class,'join']);
+
+
+
+Route::get('page1',[WebsiteController::class,'index']);
+Route::get('page2',[WebsiteController::class,'index2']);
+
+
+Route::get('list-customers',[WebsiteController::class,'listCustomers'])->name('list-customers');
+Route::get('view-customer/{id}',[WebsiteController::class,'viewCustomer'])
+->name('view-single-customer');
+Route::get('view-customer2/{id}',[WebsiteController::class,'viewCustomer2']);
+Route::get('add-customer',[WebsiteController::class,'addCustomer'])->name('add-customer');
+Route::post('save-customer',[WebsiteController::class,'saveCustomer'])->name('save-customer');
+Route::get('deleteCustomer/{id}',[WebsiteController::class,'deleteCustomer'])->name('delete-customer');
+Route::delete('deleteCustomer/{id}',[WebsiteController::class,'deleteCustomer'])->name('delete-customer2');
+Route::get('edit-customer/{id}',[WebsiteController::class,'editCustomer'])->name('edit-customer');
+Route::put('update-customer/{id}',[WebsiteController::class,'updateCustomer'])->name('update-customer');
+
+
+Route::resource('customer',CustomerResource::class);
+Route::get('deleteResource/{id}',[CustomerResource::class,'destroy'])->name('deleteResource');
 
 
 
