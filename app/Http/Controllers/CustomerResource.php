@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class CustomerResource extends Controller
 {
@@ -30,6 +32,22 @@ class CustomerResource extends Controller
      */
     public function store(Request $request)
     {
+
+//        $hashed = Hash::make("123");
+//        $response = Hash::check(2123,$hashed);
+//return $response;
+        $request->validate([
+           'first_name'=>'required|max:10|min:3|unique:customers',
+            'last_name'=>'required',
+            'telephone'=>'required|numeric',
+             'password'=>'required|confirmed'
+//            'password'=>'required|same:c_password'
+        ],
+        [
+            'unique'=>'the :attribute should be unique and not taken '
+        ]);
+
+
         Customer::create($request->all());
         return redirect()->route('customer.index');
     }

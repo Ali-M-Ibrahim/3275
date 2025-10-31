@@ -11,6 +11,9 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CustomerResource;
+use App\Http\Controllers\UploadController;
+
+
 
 
 Route::get('/', function () {
@@ -166,3 +169,8 @@ Route::get('deleteResource/{id}',[CustomerResource::class,'destroy'])->name('del
 
 
 
+Route::get('add-image',[UploadController::class,'index']);
+Route::post('upload-image1',[UploadController::class,'method1'])->name('upload-image1');
+Route::get('list-image',[UploadController::class,'list']);
+Route::post('upload-image2',[UploadController::class,'method2'])->name('upload-image2');
+Route::post('upload-image3',[UploadController::class,'method3'])->name('upload-image3');
