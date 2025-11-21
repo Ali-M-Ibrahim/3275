@@ -83,4 +83,12 @@ class WebsiteController extends Controller
         $obj->save();
         return redirect()->route('list-customers');
     }
+
+    public function page1(){
+        return view('website.first');
+     }
+    public function page2(){
+        return view('website.second');
+    }
+
 }

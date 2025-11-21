@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DIController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -164,7 +166,6 @@ Route::get('edit-customer/{id}',[WebsiteController::class,'editCustomer'])->name
 Route::put('update-customer/{id}',[WebsiteController::class,'updateCustomer'])->name('update-customer');
 
 
-Route::resource('customer',CustomerResource::class);
 Route::get('deleteResource/{id}',[CustomerResource::class,'destroy'])->name('deleteResource');
 
 
@@ -174,3 +175,32 @@ Route::post('upload-image1',[UploadController::class,'method1'])->name('upload-i
 Route::get('list-image',[UploadController::class,'list']);
 Route::post('upload-image2',[UploadController::class,'method2'])->name('upload-image2');
 Route::post('upload-image3',[UploadController::class,'method3'])->name('upload-image3');
+
+
+Route::get('page1',[WebsiteController::class,'page1']);
+
+Route::get('page2',[WebsiteController::class,'page2']);
+
+
+Route::get("website",[TemplateController::class,'index'])->name('home');
+Route::get("services",[TemplateController::class,'services'])->name('services');
+Route::get("about",[TemplateController::class,'about'])->name('aboutus');
+
+
+Route::get('old',[DIController::class,'old']);
+
+Route::get('methodDi',[DIController::class,'methodDi']);
+
+
+
+
+Route::resource('customer',CustomerResource::class)->middleware('middleware1');
+
+
+
+Route::middleware(['middleware1'])->group(function () {
+    Route::get('di-f1',[DIController::class,'f1']);
+
+    Route::get('di-f2',[DIController::class,'f2']);
+
+});
